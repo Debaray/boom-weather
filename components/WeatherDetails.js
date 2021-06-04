@@ -9,7 +9,7 @@ export default function WeatherDetails({ currentWeather, unitsSystem }) {
         main: { feels_like, humidity, pressure },
         wind: { speed },
     } = currentWeather;
-
+    const windSpeed = unitsSystem === 'metric' ? `${Math.round(speed)} m/s` : `${Math.round(speed)} miles/h`;
     return (
         <View>
             <Text>Weather details</Text>
