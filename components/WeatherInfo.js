@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
         textTransform: 'capitalize',
     },
    
-    // textPrimary: {
-    //     fontSize: 40,
-    //     color: PRIMARY_COLOR,
-    // },
+    textPrimary: {
+        fontSize: 40,
+        color: PRIMARY_COLOR,
+    },
     texSecondary: {
         fontSize: 20,
         color: SECONDARY_COLOR,
