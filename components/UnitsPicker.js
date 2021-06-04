@@ -18,17 +18,17 @@ export default function UnitsPicker({unitsSystem, setUnitsSystem}) {
 }
 const styles = StyleSheet.create({
   unitsSystem: {
-    position: "absolute",
-    ...Platform.select({
-      ios: {
-        top: -30,
-      },
-      android: {
-        top: 30,
-      },
-    }),
+    // position: "absolute",
+    // ...Platform.select({
+    //   ios: {
+    //     top: -30,
+    //   },
+    //   android: {
+    //     top: 30,
+    //   },
+    // }),
 
-    left: 20,
+    // left: 20,
     height: 50,
     width: 100,
   },

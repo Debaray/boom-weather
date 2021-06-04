@@ -2,15 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import * as Location from 'expo-location';
-import { WEATHER_API_KEY } from 'react-native-dotenv';
+import { WEATHER_API_KEY } from '@env';
 
 import WeatherInfo from './components/WeatherInfo'
 import UnitsPicker from './components/UnitsPicker'
-import ReloadIcon from './components/ReloadIcon'
-import WeatherDetails from './components/WeatherDetails'
+import ReloadIcon from './components/ReloadIcon/ReloadIcon'
+import WeatherDetails from './components/WeatherDetails/WeatherDetails'
 
 import { colors } from './utils/brandColors';
-
+import {styles} from './AppStyle'
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export default function App() {
@@ -87,32 +87,3 @@ export default function App() {
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      borderWidth: 1
-  },
-  topHeader: {
-      flex: .5,
-      flexDirection: 'column'
-  },
-  topHeaderPer: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-around'
-  },
-  main: {
-      justifyContent: 'center',
-      flex: 1.5,
-      borderWidth: 1,
-  },
-  footer: {
-      justifyContent: 'center',
-      flex: 1,
-      borderWidth: 1
-  }
-
-})

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { colors } from '../utils/brandColor';
+import { colors } from '../utils/brandColors';
 
 const { PRIMARY_COLOR, SECONDARY_COLOR } = colors;
 
