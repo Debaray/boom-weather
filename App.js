@@ -3,6 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import { WEATHER_API_KEY } from 'react-native-dotenv';
+
+import WeatherInfo from './components/WeatherInfo'
+import UnitsPicker from './components/UnitsPicker'
+import ReloadIcon from './components/ReloadIcon'
+import WeatherDetails from './components/WeatherDetails'
+
+import { colors } from './utils/brandColors';
+
 const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export default function App() {
@@ -12,10 +20,11 @@ export default function App() {
 
   useEffect(() => {
     load()
-  }, [])
+  }, [unitsSystem])
 
   async function load() {
     setCurrentWeather(null);
+    setErrorMessage(null);
     try {
       let { status } = await Location.requestForegroundPermissionsAsync()
 
@@ -33,21 +42,49 @@ export default function App() {
 
       if (response.ok) {
         setCurrentWeather(result)
-        alert(result);
       } else {
         setErrorMessage(result.message)
-        alert(result.message);
       }
     } catch (error) {
       setErrorMessage(error.message)
     }
   }
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  if (currentWeather) {
+    return (
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <View>
+          <View></View>
+          <View>
+            <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
+            <ReloadIcon load={load} />
+          </View>
+        </View>
+        <View>
+          <WeatherInfo currentWeather={currentWeather} />
+        </View>
+        <View>
+          <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
+        </View>
+      </View>
+    )
+  } else if (errorMessage) {
+    return (
+      <View style={styles.container}>
+        <ReloadIcon load={load} />
+        <Text style={{ textAlign: 'center' }}>{errorMessage}</Text>
+        <StatusBar style="auto" />
+      </View>
+    )
+  } else {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={colors.PRIMARY_COLOR} />
+        <StatusBar style="auto" />
+      </View>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
