@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import * as Location from 'expo-location';
 import { WEATHER_API_KEY } from 'react-native-dotenv';
 
@@ -53,17 +53,17 @@ export default function App() {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <View>
-          <View></View>
-          <View>
+        <View style={styles.topHeader}>
+          <View style={styles.topHeaderPer}></View>
+          <View style={styles.topHeaderPer}>
             <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
             <ReloadIcon load={load} />
           </View>
         </View>
-        <View>
+        <View style={styles.main}>
           <WeatherInfo currentWeather={currentWeather} />
         </View>
-        <View>
+        <View style={styles.footer}>
           <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
         </View>
       </View>
@@ -89,9 +89,30 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      borderWidth: 1
   },
-});
+  topHeader: {
+      flex: .5,
+      flexDirection: 'column'
+  },
+  topHeaderPer: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-around'
+  },
+  main: {
+      justifyContent: 'center',
+      flex: 1.5,
+      borderWidth: 1,
+  },
+  footer: {
+      justifyContent: 'center',
+      flex: 1,
+      borderWidth: 1
+  }
+
+})
