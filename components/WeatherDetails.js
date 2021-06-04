@@ -64,3 +64,8 @@ const styles = StyleSheet.create({
         borderColor: BORDER_COLOR,
         borderRadius: 10,
     },
+    weatherDetailsRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
