@@ -4,7 +4,12 @@ import { colors } from '../utils/index';
 
 const { PRIMARY_COLOR, SECONDARY_COLOR } = colors;
 
-export default function WeatherInfo() {
+export default function WeatherInfo({ currentWeather }) {
+    const {
+        main: { temp },
+        weather: [details],
+        name,
+    } = currentWeather
     return (
         <View>
             <Text>This is weather info</Text>
