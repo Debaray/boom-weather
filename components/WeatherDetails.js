@@ -73,3 +73,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
+    weatherDetailsItems: {
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+    },
