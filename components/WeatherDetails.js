@@ -4,7 +4,12 @@ import { colors } from '../utils/index';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 const { PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR } = colors;
 
-export default function WeatherDetails() {
+export default function WeatherDetails({ currentWeather, unitsSystem }) {
+    const {
+        main: { feels_like, humidity, pressure },
+        wind: { speed },
+    } = currentWeather;
+
     return (
         <View>
             <Text>Weather details</Text>
