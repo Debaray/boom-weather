@@ -8,11 +8,24 @@ const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 export default function App() {
 
   const [currentWeather, setCurrentWeather] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
+
   useEffect(() => {
     load()
   }, [])
   async function load() {
     setCurrentWeather(null);
+    try{
+      let {status} = await Location.requestForegroundPermissionsAsync()
+
+      if(status !== 'granted'){
+        setErrorMessage('Access to location is needed to run the app.');
+        return;
+      }
+      const location = await Location.getCurrentPositionAsync();
+      const {latitude,longitude} = location.coords;
+      alert(latitude,longitude);
+    }
   }
   return (
     <View style={styles.container}>
