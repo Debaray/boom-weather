@@ -77,3 +77,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
     },
+
+    textSecondary: {
+        fontSize: 15,
+        color: SECONDARY_COLOR,
+        fontWeight: '700',
+        margin: 7,
+    },
+})
