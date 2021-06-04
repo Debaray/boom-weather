@@ -69,3 +69,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    weatherDetailsBox: {
+        flex: 1,
+        padding: 20,
+    },
