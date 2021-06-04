@@ -56,3 +56,11 @@ export default function WeatherDetails({ currentWeather, unitsSystem }) {
     )
 }
 
+const styles = StyleSheet.create({
+    weatherDetails: {
+        marginTop: 'auto',
+        margin: 15,
+        borderWidth: 1,
+        borderColor: BORDER_COLOR,
+        borderRadius: 10,
+    },
