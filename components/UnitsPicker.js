@@ -1,23 +1,35 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
-import {colors} from "../Utils/brandColors";
-import {FontAwesome5, MaterialCommunityIcons} from "@expo/vector-icons";
-const {PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR} = colors;
+import {View, StyleSheet, Platform} from "react-native";
+import {Picker} from "@react-native-community/picker";
 
-export default function UnitsPicker() {
+export default function UnitsPicker({unitsSystem, setUnitsSystem}) {
   return (
-    <View style={styles.weatherDetails}>
-      <Text>This is units picker</Text>
+    <View style={styles.unitsSystem}>
+      <Picker
+        selectedValue={unitsSystem}
+        onValueChange={(item) => setUnitsSystem(item)}
+        mode="dropdown"
+        itemStyle={{fontSize: 12}}>
+        <Picker.Item label="C°" value="metric" />
+        <Picker.Item label="F°" value="imperial" />
+      </Picker>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
-  weatherDetails: {
-    marginTop: "auto",
-    margin: 15,
-    borderWidth: 1,
-    borderColor: BORDER_COLOR,
-    borderRadius: 10,
+  unitsSystem: {
+    position: "absolute",
+    ...Platform.select({
+      ios: {
+        top: -30,
+      },
+      android: {
+        top: 30,
+      },
+    }),
+
+    left: 20,
+    height: 50,
+    width: 100,
   },
 });
