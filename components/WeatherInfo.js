@@ -9,7 +9,11 @@ export default function WeatherInfo({ currentWeather }) {
         main: { temp },
         weather: [details],
         name,
-    } = currentWeather
+    } = currentWeather;
+
+    const { icon, main, description } = details;
+    const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
+    
     return (
         <View>
             <Text>This is weather info</Text>
