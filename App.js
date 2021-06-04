@@ -1,8 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
+import * as Location from 'expo-location';
+import { WEATHER_API_KEY } from 'react-native-dotenv';
+const BASE_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export default function App() {
+
+  const [currentWeather, setCurrentWeather] = useState(null)
+  useEffect(() => {
+    load()
+  }, [])
+  async function load() {
+    setCurrentWeather(null);
+  }
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
